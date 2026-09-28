@@ -1,0 +1,16 @@
+{
+  "name": "dashboard-backend",
+  "version": "1.0.0",
+  "description": "Backend de la practica: lista de favoritos protegida con JWT de Keycloak",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jose": "^6.2.12"
+  }
+}
