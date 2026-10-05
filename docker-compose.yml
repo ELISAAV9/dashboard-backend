@@ -1,0 +1,26 @@
+services:
+  backend:
+    build: .
+    container_name: dashboard-backend
+    environment:
+      - PORT=3000
+      - KEYCLOAK_JWKS_URL=http://host.docker.internal:8081
+      - KEYCLOAK_ISSUER_URL=http://localhost:8081
+      - KEYCLOAK_REALM=cybersecurity
+      - FRONTEND_ORIGIN=http://localhost:8082
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    networks: [backend-net]
+
+  backend-proxy:
+    build: ./proxy
+    container_name: backend-proxy
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - "8090:80"
+    depends_on: [backend]
+    networks: [backend-net]
+
+networks:
+  backend-net:
