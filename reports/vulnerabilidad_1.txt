@@ -1,0 +1,9 @@
+fix: deshabilitar modo desarrollo de Express (NODE_ENV=production)
+
+Nuclei detecto que Express exponia stack traces completos (rutas
+internas, librerias y versiones) en respuestas de error 400.
+Severidad: media. CWE-209.
+
+Se corrige fijando NODE_ENV=production en el Dockerfile, lo que
+hace que Express devuelva mensajes de error genericos en lugar
+de informacion de depuracion.

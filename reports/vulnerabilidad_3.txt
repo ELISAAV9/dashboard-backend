@@ -1,0 +1,9 @@
+fix: ocultar version de nginx y tecnologia Express (fingerprinting)
+
+Nuclei detecto la version exacta de nginx (1.27.5) en el header
+Server, y el header X-Powered-By revelaba el uso de Express.
+Esta informacion facilita buscar CVEs especificos de esas versiones
+y tecnologias (tech-detect, nginx-version, nginx-eol).
+
+- nginx.conf: server_tokens off; oculta la version de nginx
+- server.js: app.disable('x-powered-by') oculta el framework
